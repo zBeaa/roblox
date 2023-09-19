@@ -1,0 +1,25 @@
+local part = script.Parent
+
+local function FelicitacaoJogador(player)
+	local screenGui = Instance.new("ScreenGui")
+	screenGui.Parent = player.PlayerGui
+	
+	local textLabel = Instance.new("TextLabel")
+	textLabel.Text = "Parabéns, você terminou o jogo"
+	textLabel.Size= UDim.new(1,0,1,0)
+	textLabel.TextSize = 40
+	
+	textLabel.TextColor3 = Color3.new(0.792157, 0.654902, 1)
+	textLabel.Parent = screenGui
+	
+	wait(5)
+	screenGui:Destroy()
+end
+
+part.Touched:Connect(function(other)
+	local character = other.Parent
+	local player = game.Players:GetPlayerFromCharacter(character)
+	if player then
+		FelicitacaoJogador(player)
+	end
+end)
